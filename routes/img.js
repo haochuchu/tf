@@ -9,7 +9,7 @@ var pool=mysql.createPool({
 	host:'127.0.0.1',
 	user:'root',
 	password:'',
-	database:'xiebin',
+	database:'tianfang',
 	port:3306
 })
 
@@ -18,7 +18,7 @@ var pool=mysql.createPool({
 router.post('/img',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*"); //跨域
 	var form = new formidable.IncomingForm();
-	form.uploadDir='public/upload';
+	form.uploadDir='public/images';
 	  //上传图片存放的路径
 	
 	form.parse(req,function(error,fields,files){
@@ -36,18 +36,16 @@ router.post('/img',function(req,res){
 				fName=fName+".gif";
 
 			}
-			var newPath='public/upload/'+fName;  //要返回的图片的路径
+			var newPath='public/images/'+fName;  //要返回的图片的路径
 			fs.renameSync(file.path,newPath);
 			 // res.send(fName)
 		}
-		pool.query(`insert into user(img) values('http://localhost:8005/upload/${fName}')`,function(err,rows){
+		pool.query(`insert into img(img) values('http://localhost:8100/images/${fName}')`,function(err,rows){
 			if (err) throw err;
 			if(rows){
 				res.send('上传成功')
 			}
-			
 		})
-		
 	})
 	});
 
@@ -55,7 +53,7 @@ router.post('/img',function(req,res){
 //调取图片
 router.get('/photo',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-	pool.query('select * from user',function(err,rows){
+	pool.query('select * from img',function(err,rows){
 		if(err) throw err;
 		res.send(rows);
 	})

@@ -13,6 +13,7 @@ var nav = require('./routes/nav');
 var journey = require('./routes/journey');
 var made = require('./routes/made');
 var footer = require('./routes/footer');
+var img = require('./routes/img');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/tianfang', nav);
 app.use('/tianfang', journey);
 app.use('/tianfang', made);
 app.use('/tianfang', footer);
+app.use('/tianfang', img);
 
 
 // catch 404 and forward to error handler
