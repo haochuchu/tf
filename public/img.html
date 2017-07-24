@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="javascripts/jquery-1.11.3.min.js">
+		</script>
+	</head>
+	<body>
+		<input type="file" multiple="multiple" onchange="setFiles(this)">
+		<button>注册</button>
+
+		<div class="photo"></div>
+		<script type="text/javascript">
+
+		var files
+			  var setFiles=function(element){
+			  	console.log(element.files)
+			  	files=element.files[0]   
+			  	/*for(var i=0; i<files.){
+			  		
+			  	}*/
+
+			  }
+			$('button').click(function(){
+				console.log('xxx')
+				var fd=new FormData();  //表单处理数据的方法
+				fd.append('uploadedFile',files) //用append方法以键值对的方式保存
+		        console.log(fd)
+	        $.ajax({
+				type:"post",
+				url:"http://localhost:8005/img/img",
+				async:true,
+				data:fd,
+				contentType:false,
+				processData:false,
+				success:function(e){				
+					console.log(e)
+      			}
+			});
+})
+			//获取图片
+			$.ajax({
+				type:"get",
+				url:"http://localhost:8005/img/photo",
+				async:true,
+				success:function(e){				
+					console.log(e)
+					for(var i=0;i<e.length;i++){
+						console.log(e[i].img)
+					$('.photo').append('<img src="'+e[i].img+'">')
+					}
+      			}
+			});
+
+
+		</script>
+	</body>
+</html>
