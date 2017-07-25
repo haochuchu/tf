@@ -20,6 +20,7 @@ var brand = require('./routes/brand');
 var system = require('./routes/system');
 var first_page = require('./routes/first_page');
 var grow = require('./routes/grow');
+var cont = require('./routes/cont');
 
 
 
@@ -52,6 +53,8 @@ app.use('/tianfang', brand);
 app.use('/tianfang', system);
 app.use('/tianfang', first_page);
 app.use('/tianfang', grow);
+app.use('/tianfang', cont);
+
 
 
 
