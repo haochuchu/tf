@@ -15,6 +15,7 @@ var made = require('./routes/made');
 var footer = require('./routes/footer');
 var img = require('./routes/img');
 var pic_list = require('./routes/pic_list');
+var prize = require('./routes/prize');
 
 
 var app = express();
@@ -41,6 +42,7 @@ app.use('/tianfang', made);
 app.use('/tianfang', footer);
 app.use('/tianfang', img);
 app.use('/tianfang', pic_list);
+app.use('/tianfang', prize);
 
 
 
