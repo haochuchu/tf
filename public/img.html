@@ -9,7 +9,6 @@
 	<body>
 		<input type="file" multiple="multiple" onchange="setFiles(this)">
 		<button>注册</button>
-
 		<div class="photo"></div>
 		<script type="text/javascript">
 
@@ -37,8 +36,7 @@
 					console.log(e)
       			}
 			});
-})
-			//获取图片
+
 			$.ajax({
 				type:"get",
 				url:"http://localhost:8100/tianfang/photo",
@@ -51,6 +49,9 @@
 					}
       			}
 			});
+})
+			//获取图片
+
 
 
 		</script>
