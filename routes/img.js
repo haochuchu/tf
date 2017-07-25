@@ -37,7 +37,8 @@ router.post('/img',function(req,res){
 			fs.renameSync(file.path,newPath);
 			 // res.send(fName)
 		}
-		pool.query(`insert into brand(img) values('http://localhost:8100/images/${fName}')`,function(err,rows){
+
+		pool.query(`insert into first_page(pic) values('http://localhost:8100/images/${fName}')`,function(err,rows){
 			if (err) throw err;
 			if(rows){
 				res.send('上传成功')
@@ -50,7 +51,7 @@ router.post('/img',function(req,res){
 //调取图片
 router.get('/photo',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-	pool.query('select * from brand',function(err,rows){
+pool.query('select * from first_page',function(err,rows){
 		if(err) throw err;
 		res.send(rows);
 	})

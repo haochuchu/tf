@@ -17,6 +17,9 @@ var img = require('./routes/img');
 var pic_list = require('./routes/pic_list');
 var prize = require('./routes/prize');
 var brand = require('./routes/brand');
+var system = require('./routes/system');
+var first_page = require('./routes/first_page');
+
 
 
 var app = express();
@@ -45,6 +48,9 @@ app.use('/tianfang', img);
 app.use('/tianfang', pic_list);
 app.use('/tianfang', prize);
 app.use('/tianfang', brand);
+app.use('/tianfang', system);
+app.use('/tianfang', first_page);
+
 
 
 
