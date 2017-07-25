@@ -29,7 +29,7 @@
 		        console.log(fd)
 	        $.ajax({
 				type:"post",
-				url:"http://localhost:8005/img/img",
+				url:"http://localhost:8100/tianfang/img",
 				async:true,
 				data:fd,
 				contentType:false,
@@ -38,11 +38,10 @@
 					console.log(e)
       			}
 			});
-})
-			//获取图片
+
 			$.ajax({
 				type:"get",
-				url:"http://localhost:8005/img/photo",
+				url:"http://localhost:8100/tianfang/photo",
 				async:true,
 				success:function(e){				
 					console.log(e)
@@ -52,6 +51,9 @@
 					}
       			}
 			});
+})
+			//获取图片
+
 
 
 		</script>
