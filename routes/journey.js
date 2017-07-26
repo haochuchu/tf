@@ -12,8 +12,6 @@ var pool=mysql.createPool({
 
 router.post("/journey",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-
-	
 		pool.query('SELECT * from journey',function(err,rows,fields){
 		if(err) throw err;
 		res.send(rows);
@@ -21,13 +19,13 @@ router.post("/journey",function(req,res){
 
 });
 
-/*router.post("/xiangqing",function(req,res){
+router.post("/xiangqing",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-     var id=req.body["id"]
-     console.log(id)
+     var id=req.body["id"];
+     console.log(id);
 	pool.query(`SELECT * from journey where id=${id}`,function(err,rows){
           if(err) throw err;
           res.send(rows)
 	});
-})*/
+})
 module.exports=router;
