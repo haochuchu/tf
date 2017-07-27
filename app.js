@@ -22,6 +22,8 @@ var first_page = require('./routes/first_page');
 var grow = require('./routes/grow');
 var cont = require('./routes/cont');
 var contact = require('./routes/contact');
+var carousel = require('./routes/carousel');
+var bundle = require('./routes/bundle');
 
 
 
@@ -56,6 +58,8 @@ app.use('/tianfang', first_page);
 app.use('/tianfang', grow);
 app.use('/tianfang', cont);
 app.use('/tianfang', contact);
+app.use('/tianfang', carousel);
+app.use('/tianfang', bundle);
 
 
 
