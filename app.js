@@ -24,6 +24,7 @@ var cont = require('./routes/cont');
 var contact = require('./routes/contact');
 var carousel = require('./routes/carousel');
 var bundle = require('./routes/bundle');
+var supers = require('./routes/supers');
 
 
 
@@ -60,6 +61,7 @@ app.use('/tianfang', cont);
 app.use('/tianfang', contact);
 app.use('/tianfang', carousel);
 app.use('/tianfang', bundle);
+app.use('/tianfang', supers);
 
 
 
