@@ -12,12 +12,12 @@ var pool=mysql.createPool({
 
 router.post("/system",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-
-	
 		pool.query('SELECT * from system',function(err,rows,fields){
 		if(err) throw err;
 		res.send(rows);
 	});
 
 });
+
+
 module.exports=router;

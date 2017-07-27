@@ -12,12 +12,20 @@ var pool=mysql.createPool({
 
 router.post("/pic_list",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-
-	
 		pool.query('SELECT * from pic_list',function(err,rows,fields){
 		if(err) throw err;
 		res.send(rows);
 	});
 
 });
+
+router.post("/xiangqing",function(req,res){
+	res.header("Access-Control-Allow-Origin", "*");
+     var id=req.body["id"];
+     console.log(id);
+	pool.query(`SELECT * from pic_list where id=${id}`,function(err,rows){
+          if(err) throw err;
+          res.send(rows)
+	});
+})
 module.exports=router;
