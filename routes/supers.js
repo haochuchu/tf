@@ -18,6 +18,15 @@ router.post("/supers",function(req,res){
 	});
 
 });
+router.post("/xiangqing4",function(req,res){
+	res.header("Access-Control-Allow-Origin", "*");
+     var id=req.body["id"];
+     console.log(id);
+	pool.query(`SELECT * from supers where id=${id}`,function(err,rows){
+          if(err) throw err;
+          res.send(rows)
+	});
+})
 
 
 module.exports=router;

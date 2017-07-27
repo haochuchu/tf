@@ -40,7 +40,7 @@ router.post('/img',function(req,res){
 
 
 
-		pool.query(`insert into supers(super_img) values('http://localhost:8100/images/${fName}')`,function(err,rows){
+		pool.query(`insert into supers(more) values('http://localhost:8100/images/${fName}')`,function(err,rows){
 			if (err) throw err;
 			if(rows){
 				res.send('上传成功')
