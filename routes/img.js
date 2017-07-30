@@ -40,7 +40,7 @@ router.post('/img',function(req,res){
 
 
 
-		pool.query(`insert into supers(more) values('http://localhost:8100/images/${fName}')`,function(err,rows){
+		pool.query(`insert into con_img(img) values('http://localhost:8100/images/${fName}')`,function(err,rows){
 			if (err) throw err;
 			if(rows){
 				res.send('上传成功')
@@ -53,7 +53,7 @@ router.post('/img',function(req,res){
 //调取图片
 router.get('/photo',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-pool.query('select * from supers',function(err,rows){
+pool.query('select * from con_img',function(err,rows){
 
 		if(err) throw err;
 		res.send(rows);
