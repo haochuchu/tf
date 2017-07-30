@@ -25,7 +25,12 @@ var contact = require('./routes/contact');
 var carousel = require('./routes/carousel');
 var bundle = require('./routes/bundle');
 var supers = require('./routes/supers');
-
+var animate_one = require('./routes/animate_one');
+var animate_two = require('./routes/animate_two');
+var animate_three = require('./routes/animate_three');
+var hot_line = require('./routes/hot_line');
+var message = require('./routes/message');
+var con_img = require('./routes/con_img');
 
 
 var app = express();
@@ -62,10 +67,12 @@ app.use('/tianfang', contact);
 app.use('/tianfang', carousel);
 app.use('/tianfang', bundle);
 app.use('/tianfang', supers);
-
-
-
-
+app.use('/tianfang', animate_one);
+app.use('/tianfang', animate_two);
+app.use('/tianfang', animate_three);
+app.use('/tianfang', hot_line);
+app.use('/tianfang', message);
+app.use('/tianfang', con_img);
 
 
 // catch 404 and forward to error handler
