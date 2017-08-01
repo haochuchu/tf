@@ -31,6 +31,8 @@ var animate_three = require('./routes/animate_three');
 var hot_line = require('./routes/hot_line');
 var message = require('./routes/message');
 var con_img = require('./routes/con_img');
+var backcases = require('./routes/backcases');
+
 
 
 var app = express();
@@ -73,6 +75,7 @@ app.use('/tianfang', animate_three);
 app.use('/tianfang', hot_line);
 app.use('/tianfang', message);
 app.use('/tianfang', con_img);
+app.use('/tianfang', backcases);
 
 
 // catch 404 and forward to error handler
