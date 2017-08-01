@@ -30,11 +30,11 @@ router.post("/xiangqing2",function(req,res){
 	});
 })
 
-router.post('/upprize',function(req,res){
+router.post('/upprizes',function(req,res){
 	var id=req.body["id"]
 	var title=req.body["title"]
 	res.header("Access-Control-Allow-Origin", "*");
-	pool.query(`update prize set  prize_word="${title}" where id=${id}`, function(err, rows, fields) {
+	pool.query(`update prize set prize_word="${title}" where id=${id}`, function(err, rows, fields) {
 		if (err) throw err;
 	  	res.send("修改成功")
 	});
