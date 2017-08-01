@@ -41,7 +41,7 @@ router.post('/incases1',function(req,res){
 		}
 		imgs=`http://localhost:8100/images/${fName}`
 	})
-	});
+});
 	
 	
 //插入文本
