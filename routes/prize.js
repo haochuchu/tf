@@ -39,7 +39,7 @@ router.post('/upprizes',function(req,res){
 	  	res.send("修改成功")
 	});
 })
-router.post('/dlcases1',function(req,res){
+router.post('/dlcases8',function(req,res){
 	var id=req.body["id"]
 	var title=req.body["title"]
 	res.header("Access-Control-Allow-Origin", "*");
