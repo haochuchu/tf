@@ -39,7 +39,19 @@ router.post('/upprizes',function(req,res){
 	  	res.send("修改成功")
 	});
 })
-router.post('/dlcases1',function(req,res){
+
+router.post('/upprizes_prize',function(req,res){
+	var id=req.body["id"]
+	var title=req.body["title"]
+	res.header("Access-Control-Allow-Origin", "*");
+	pool.query(`update prize set con="${title}" where id=${id}`, function(err, rows, fields) {
+		if (err) throw err;
+	  	res.send("修改成功")
+	});
+})
+
+
+router.post('/dlcases8',function(req,res){
 	var id=req.body["id"]
 	var title=req.body["title"]
 	res.header("Access-Control-Allow-Origin", "*");
@@ -87,12 +99,48 @@ router.post('/incases8',function(req,res){
 		}
 		imgs=`http://localhost:8100/images/${fName}`
 	})
-	});
+});
+router.post('/incases11',function(req,res){
+	res.header("Access-Control-Allow-Origin", "*"); //跨域
+	var form = new formidable.IncomingForm();
+	form.uploadDir='public/images';
+	  //上传图片存放的路径
+	form.parse(req,function(error,fields,files){
+		for(var i in files){
+			var file = files[i];  //保存图片属性
+			var fName = (new Date()).getTime()  //用一时间戳作为图片的名字
+			switch(file.type){    //检测图片的格式
+				case "image/jpeg":
+				fName=fName+".jpg";
+				break;
+				case "image/png":
+				fName=fName+".png";
+				break;
+				case "image/gif":
+				fName=fName+".gif";
+
+			}
+			var newPath='public/images/'+fName;  //要返回的图片的路径
+			fs.renameSync(file.path,newPath);
+			  res.send(newPath)
+		}
+		imgs=`${fName}`
+	})
+});
 //调取图片
 router.post('/alcases8',function(req,res){
 	var id=req.body["id"]
 	res.header("Access-Control-Allow-Origin", "*");
 pool.query(`update prize set prize_img="${imgs}" where id=${id}`, function(err, rows, fields) {
+		if (err) throw err;
+	  	res.send("修改成功")
+	});
+})
+
+router.post('/alcases12',function(req,res){
+	var id=req.body["id"]
+	res.header("Access-Control-Allow-Origin", "*");
+pool.query(`update prize set more="${imgs}" where id=${id}`, function(err, rows, fields) {
 		if (err) throw err;
 	  	res.send("修改成功")
 	});
