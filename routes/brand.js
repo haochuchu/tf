@@ -2,6 +2,10 @@ var express=require("express");
 var mysql=require("mysql");
 var router=express.Router();
 
+var fs=require('fs');   //重新命名
+var formidable=require('formidable');   //写入文件
+var imgs
+var config="http://localhost:8100/";
 var pool=mysql.createPool({
 	host:"127.0.0.1",//localhost
 	user:"root",//用户名
@@ -65,7 +69,7 @@ router.post('/incases1',function(req,res){
 			fs.renameSync(file.path,newPath);
 			  res.send(newPath)
 		}
-		imgs=`http://localhost:8100/images/${fName}`
+		imgs=`${config}images/${fName}`
 	})
 	});
 //调取图片
@@ -77,5 +81,4 @@ pool.query(`update brand set  img="${imgs}" where id=${id}`, function(err, rows,
 	  	res.send("修改成功")
 	});
 })
-module.exports=router;
 module.exports=router;

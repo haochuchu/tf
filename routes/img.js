@@ -2,9 +2,11 @@ var express=require('express');
 var mysql=require('mysql');
 var router=express.Router();
 
+
 var fs=require('fs');   //重新命名
 var formidable=require('formidable');   //写入文件
-
+var imgs
+var config="http://localhost:8100/";
 var pool=mysql.createPool({
 	host:'127.0.0.1',
 	user:'root',
@@ -76,7 +78,7 @@ router.post('/incases12',function(req,res){
 			fs.renameSync(file.path,newPath);
 			  res.send(newPath)
 		}
-		imgs=`http://localhost:8100/images/${fName}`
+		imgs=`${config}images/${fName}`
 	})
 	});
 //调取图片
