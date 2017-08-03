@@ -41,7 +41,6 @@ router.post('/incases3',function(req,res){
 	})
 	});
 
-
 router.post("/pic_list",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
 		pool.query('SELECT * from pic_list',function(err,rows,fields){

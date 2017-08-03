@@ -12,8 +12,6 @@ var pool=mysql.createPool({
 
 router.post("/con_img",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
-
-	
 		pool.query('SELECT * from con_img',function(err,rows,fields){
 		if(err) throw err;
 		res.send(rows);

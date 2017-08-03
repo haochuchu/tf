@@ -4,6 +4,7 @@ var router=express.Router();
 var fs=require('fs');   //重新命名
 var formidable=require('formidable');   //写入文件
 var imgs
+var imgp
 var pool=mysql.createPool({
 	host:"127.0.0.1",//localhost
 	user:"root",//用户名
@@ -50,7 +51,6 @@ router.post('/upprizes_prize',function(req,res){
 	});
 })
 
-
 router.post('/dlcases8',function(req,res){
 	var id=req.body["id"]
 	var title=req.body["title"]
@@ -64,7 +64,7 @@ router.post('/dlcases8',function(req,res){
 router.post('/accases2',function(req,res){
 	var text=req.body["text"]
 	res.header("Access-Control-Allow-Origin", "*");
-	pool.query(`insert into prize(prize_word,prize_img) values("${text}","${imgs}")`,function(err,rows){
+	pool.query(`insert into prize(prize_word,prize_img,more) values("${text}","${imgs}","${imgp}")`,function(err,rows){
 			if (err) throw err;
 			if(rows){
 				res.send("上传成功")
@@ -100,6 +100,7 @@ router.post('/incases8',function(req,res){
 		imgs=`http://localhost:8100/images/${fName}`
 	})
 });
+
 router.post('/incases11',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*"); //跨域
 	var form = new formidable.IncomingForm();
@@ -124,7 +125,7 @@ router.post('/incases11',function(req,res){
 			fs.renameSync(file.path,newPath);
 			  res.send(newPath)
 		}
-		imgs=`${fName}`
+		imgp=`http://localhost:8100/images/${fName}`
 	})
 });
 //调取图片
@@ -140,7 +141,7 @@ pool.query(`update prize set prize_img="${imgs}" where id=${id}`, function(err, 
 router.post('/alcases12',function(req,res){
 	var id=req.body["id"]
 	res.header("Access-Control-Allow-Origin", "*");
-pool.query(`update prize set more="${imgs}" where id=${id}`, function(err, rows, fields) {
+pool.query(`update prize set more="${imgp}" where id=${id}`, function(err, rows, fields) {
 		if (err) throw err;
 	  	res.send("修改成功")
 	});
