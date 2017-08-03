@@ -7,13 +7,7 @@ var fs=require('fs');   //重新命名
 var formidable=require('formidable');   //写入文件
 var imgs
 var config="http://localhost:8100/";
-var pool=mysql.createPool({
-	host:'127.0.0.1',
-	user:'root',
-	password:'',
-	database:'tianfang',
-	port:3306
-})
+var pool=require("./../config.js");
 router.get('/img',function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
 pool.query('select * from img',function(err,rows){

@@ -6,13 +6,7 @@ var formidable=require('formidable');   //写入文件
 var imgs
 var imgp
 var config="http://localhost:8100/";
-var pool=mysql.createPool({
-	host:"127.0.0.1",//localhost
-	user:"root",//用户名
-	password:"",//密码
-	database:"tianfang",//数据库
-	port:"3306"
-});
+var pool=require("./../config.js");
 
 router.post("/prize",function(req,res){
 	res.header("Access-Control-Allow-Origin", "*");
@@ -126,7 +120,7 @@ router.post('/incases11',function(req,res){
 			fs.renameSync(file.path,newPath);
 			  res.send(newPath)
 		}
-		imgp=`${config}images/${fName}`
+		imgp=`${fName}`
 	})
 });
 //调取图片

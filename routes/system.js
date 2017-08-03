@@ -6,13 +6,7 @@ var fs=require('fs');   //重新命名
 var formidable=require('formidable');   //写入文件
 var imgs
 var config="http://localhost:8100/";
-var pool=mysql.createPool({
-	host:"127.0.0.1",//localhost
-	user:"root",//用户名
-	password:"",//密码
-	database:"tianfang",//数据库
-	port:"3306"
-});
+var pool=require("./../config.js");
 
 //插入图片
 router.post('/system_file',function(req,res){
